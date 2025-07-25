@@ -1,47 +1,25 @@
-<script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+<script>
+  let isNavbarOpen = $state(false)
 </script>
-
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
+<nav class="flex flex-row items-center justify-between p-3 pl-10 pr-10">
+  <h1 class="text-2xl">
+    <a href="/">Ishayu Ray</a>
+  </h1>
+  <div class="flex items-center gap-3 max-md:hidden">
+    <a href="#about"> About Me </a>
+    <a href="#contact"> Contact Me </a>
   </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+  <button class="text-3xl min-md:hidden" onclick={() => isNavbarOpen = !isNavbarOpen}> ≡ </button>
+</nav>
+<hr/>
+<div class={(isNavbarOpen)? "flex flex-col justify-center items-center text-center gap-3 p-3" : "hidden"}>
+  <a href="#about"> About Me </a>
+  <a href="#contact"> Contact Me </a>
+</div>
+<hr class="p-2"/>
+<article class="pl-10 pr-10">
+  <h1 class="text-4xl text-yellow-300" id="about"> Hi 👋 I'm Ishayu Ray! </h1>
+  <p> I'm a high school student interested in programing and robots</p>
+  <p> I also enjoy reading. </p>
+  <p id="contact"> You can contact me at <a href="mailto:theishayuray@gmail.com" class="text-blue-400 underline">theishayuray@gmail.com</a></p>
+</article>
